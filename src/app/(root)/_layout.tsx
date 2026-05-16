@@ -1,7 +1,7 @@
-import { SplashScreen, Stack } from 'expo-router';
-import { useUser } from '@clerk/expo';
-import { useEffect } from 'react';
 import { syncUserToDatabase } from '@/src/lib/auth';
+import { useUser } from '@clerk/expo';
+import { SplashScreen, Stack } from 'expo-router';
+import { useEffect } from 'react';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -9,6 +9,8 @@ const RootLayout = () => {
     const { user } = useUser();
 
     useEffect(() => {
+        if (!user) return;
+
         syncUserToDatabase(user);
     }, [user]);
 

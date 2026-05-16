@@ -19,6 +19,7 @@ export const generateMarkersFromData = ({
             latitude: userLatitude + latOffset,
             longitude: userLongitude + lngOffset,
             title: `${driver.first_name} ${driver.last_name}`,
+            id: driver.driver_id,
             ...driver,
         };
     });
@@ -84,7 +85,7 @@ export const calculateDriverTimes = async ({
     userLongitude: number | null;
     destinationLatitude: number | null;
     destinationLongitude: number | null;
-}) => {
+}): Promise<(MarkerData & { time: number; price: string })[] | undefined> => {
     if (
         !userLatitude ||
         !userLongitude ||

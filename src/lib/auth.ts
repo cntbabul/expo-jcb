@@ -1,7 +1,7 @@
 import { fetchAPI } from '@/src/lib/fetch';
 
 /**
- * Checks if a Clerk user exists in the Neon database.
+ * Checks if a Clerk user exists in the MongoDB database.
  * If not, it automatically syncs them.
  */
 export const syncUserToDatabase = async (user: any) => {
